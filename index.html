@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemist's Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="icon" href="path/to/your/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .medicine-image {
+            animation: changeMedicine 10s infinite;
+        }
+        @keyframes changeMedicine {
+            0%, 20% {
+                content: url("https://placehold.co/300x200/003366/FFFFFF/png?text=Medicine+1&font=Montserrat");
+            }
+            25%, 45% {
+                content: url("https://placehold.co/300x200/003366/FFFFFF/png?text=Medicine+2&font=Montserrat");
+            }
+            50%, 70% {
+                content: url("https://placehold.co/300x200/003366/FFFFFF/png?text=Medicine+3&font=Montserrat");
+            }
+            75%, 95% {
+                content: url("https://placehold.co/300x200/003366/FFFFFF/png?text=Medicine+4&font=Montserrat");
+            }
+            100% {
+                content: url("https://placehold.co/300x200/003366/FFFFFF/png?text=Medicine+1&font=Montserrat");
+            }
+        }
+
+        .service-card {
+            transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+        }
+
+        .service-card:hover {
+            transform: translate(0, -10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .fancy-heading {
+            background: linear-gradient(to right, #6b7280, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: fadeIn 2s ease, slideIn 1s ease forwards;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-50px); }
+            to { transform: translateX(0); }
+        }
+
+        .parallax {
+            background-image: url('path/to/your/background-image.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+        .parallax-content {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 4rem;
+            border-radius: 1rem;
+        }
+        .parallax h2 {
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        #mobile-menu {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            #mobile-menu {
+                display: block;
+            }
+            #hamburger-btn {
+                display: block;
+            }
+            nav {
+                display: none;
+            }
+        }
+        #hamburger-btn.active + #mobile-menu {
+            display: block;
+        }
+        #mobile-menu.active {
+            display: block;
+        }
+        #close-menu-btn {
+            display: block;
+        }
+        #close-menu-btn.active {
+            display: none;
+        }
+        #hamburger-btn.active {
+            display: none;
+        }
+        #hamburger-btn.active + #mobile-menu {
+            display: none;
+        }
+        #mobile-menu.active {
+            display: block;
+        }
+      
+    </style>
+</head>
+<header class="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-blue py-4 shadow-lg sticky top-0 z-10 rounded-b-lg">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+        <!-- Logo Section -->
+        <div class="flex items-center">
+            <img src="chemist.png" alt="heco logo" class="mr-4 rounded-md" style="display:block; width: 70px; height: auto;">
+            <h1 class="text-2xl font-semibold">HECO CHEMIST</h1>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav id="desktop-nav" class="md:block hidden">
+            <ul class="flex space-x-6">
+                <li><a href="#home" class="hover:text-yellow-300 transition duration-300">Home</a></li>
+                <li><a href="#about" class="hover:text-yellow-300 transition duration-300">About us</a></li>
+                <li><a href="#services" class="hover:text-yellow-300 transition duration-300">Services</a></li>
+                <li><a href="#contact" class="hover:text-yellow-300 transition duration-300">Contact us</a></li>
+            </ul>
+        </nav>
+
+        <!-- Mobile Hamburger Button -->
+        <button id="hamburger-btn" class="md:hidden text-white focus:outline-none" aria-label="Toggle Navigation" onclick="toggleNav()">
+            <i class="fas fa-bars text-xl"></i>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-90 z-20">
+    <div class="bg-gray-800 w-80 h-full absolute right-0 p-6">
+        <div class="flex justify-end mb-4">
+            <button id="close-menu-btn" class="text-white focus:outline-none" aria-label="Close Menu">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <nav class="block">
+            <ul class="space-y-4">
+                <li><a href="#home" class="block text-lg text-white hover:text-gray-200 transition duration-300">Home</a></li>
+                <li><a href="#about" class="block text-lg text-white hover:text-gray-200 transition duration-300">About</a></li>
+                <li><a href="#services" class="block text-lg text-white hover:text-gray-200 transition duration-300">Services</a></li>
+                <li><a href="#contact" class="block text-lg text-white hover:text-gray-200 transition duration-300">Contact us</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+    <section id="home" class="bg-cover bg-center h-screen flex justify-center items-center" style="background-image: url('https://i.pinimg.com/736x/cd/ea/5d/cdea5d645e6671d17f6bc65055be2be3.jpg');">
+        <div class="text-center text-white bg-black bg-opacity-50 p-8 rounded-lg">
+            <h2 class="text-4xl font-bold mb-4">Discover our problem let us fix it</h2>
+            <p class="text-lg mb-8">Explore our range of medicines and solutions.</p>
+            <div class="flex justify-center">
+                <a href="#new-medicines" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-full transition duration-300">Explore medicines</a>
+            </div>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-4 py-8">
+        <section id="home-section" class="mb-16">
+            <div class="bg-blue-100 rounded-lg shadow-md p-6 flex flex-col md:flex-row items-center gap-6">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-semibold text-blue-700 fancy-heading">[Heco chemist]: Advancing Chemical Solutions</h2>
+                    <p class="text-gray-700 mt-4">A concise statement of the chemist's expertise and services.</p>
+                    <a href="#services" class="inline-block mt-6 bg-blue-500 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-md transition duration-300">Explore Services</a>
+                     <a href="https://wa.me/0112019838" target="_blank" class="inline-block mt-6 ml-4 bg-green-500 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-md transition duration-300">Order via WhatsApp</a>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://i.pinimg.com/736x/66/c4/b1/66c4b1edcfdc8a3d74db350788c35d8a.jpg" alt="Chemistry Image" class="rounded-lg shadow-md">
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="mb-16 parallax">
+            <div class="parallax-content">
+                <h2 class="text-2xl font-semibold text-blue-700 mb-4">About Heco Chemist</h2>
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                    <div class="md:w-1/3">
+                        <img src="https://i.pinimg.com/736x/17/8b/68/178b68310a24044224453682efa58497.jpg" alt="Chemist Photo" class="rounded-lg shadow-md">
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-gray-700">Summary of the chemist's background, qualifications, research interests, and professional experience. Detailed biography, including education, professional affiliations, awards, and research philosophy.</p>
+                        <div class="mt-4">
+                            <h3 class="text-lg font-semibold text-blue-600">Education</h3>
+                            <p class="text-gray-700">Ph.D. in Chemistry</p>
+                            <h3 class="text-lg font-semibold text-blue-600 mt-2">Experience</h3>
+                        <p class="text-gray-700">Research Scientist, Company Name</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="mb-16">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6 service-card">
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">Chemical Analysis</h3>
+                    <p class="text-gray-700 mb-4">In-depth descriptions of each service, including methodologies, applications, and benefits. List of equipment and technologies used.</p>
+                    <ul class="list-disc list-inside text-gray-600">
+                        <li>Method 1</li>
+                        <li>Method 2</li>
+                        <li>Method 3</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 service-card">
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">Synthesis</h3>
+                    <p class="text-gray-700 mb-4">In-depth descriptions of each service, including methodologies, applications, and benefits. List of equipment and technologies used.</p>
+                     <ul class="list-disc list-inside text-gray-600">
+                        <li>Method A</li>
+                        <li>Method B</li>
+                        <li>Method C</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 service-card">
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">Consulting</h3>
+                    <p class="text-gray-700 mb-4">In-depth descriptions of each service, including methodologies, applications, and benefits. List of equipment and technologies used.</p>
+                     <ul class="list-disc list-inside text-gray-600">
+                        <li>Area X</li>
+                        <li>Area Y</li>
+                        <li>Area Z</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="new-medicines" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-8">
+                <h2 class="text-3xl font-semibold text-gray-800 text-center mb-12">New Medicines</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div class="medicine-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="https://i.pinimg.com/736x/03/79/73/037973c551771dfbc6b1bff6f9630a59.jpg" alt="Medicine 1" class="w-full h-32 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Medicine Name 1</h3>
+                            <p class="text-gray-600 mb-2 text-sm">Brief description of the medicine.</p>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-green-500 font-semibold text-sm">Pack of 10</span>
+                                <span class="text-blue-500 font-bold text-sm">$20</span>
+                            </div>
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300 order-button" data-medicine-name="Medicine Name 1" data-medicine-price="$20" onclick="window.open('https://wa.me/0112019838?text=Hello, I would like to order Medicine Name 1 for $20.', '_blank')">Order via WhatsApp</button>
+                        </div>
+                    </div>
+                    <div class="medicine-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="https://i.pinimg.com/736x/6a/81/a6/6a81a651fcd502f56e67669245b6d426.jpg" alt="Medicine 2" class="w-full h-32 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Medicine Name 2</h3>
+                            <p class="text-gray-600 mb-2 text-sm">Brief description of the medicine.</p>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-green-500 font-semibold text-sm">Pack of 15</span>
+                                <span class="text-blue-500 font-bold text-sm">$25</span>
+                            </div>
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300 order-button" data-medicine-name="Medicine Name 2" data-medicine-price="$25" onclick="window.open('https://wa.me/0112019838?text=Hello, I would like to order Medicine Name 2 for $25.', '_blank')">Order via WhatsApp</button>
+                        </div>
+                    </div>
+                    <div class="medicine-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="https://i.pinimg.com/736x/bd/f4/57/bdf45717bc6ff22a67db77ce9bf91254.jpg" alt="Medicine 3" class="w-full h-32 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Medicine Name 3</h3>
+                            <p class="text-gray-600 mb-2 text-sm">Brief description of the medicine.</p>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-green-500 font-semibold text-sm">Pack of 20</span>
+                                <span class="text-blue-500 font-bold text-sm">$30</span>
+                            </div>
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300 order-button" data-medicine-name="Medicine Name 3" data-medicine-price="$30" onclick="window.open('https://wa.me/0112019838?text=Hello, I would like to order Medicine Name 3 for $30.', '_blank')">Order via WhatsApp</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        
+        <section id="feedback" class="mb-16">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Feedback</h2>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <p class="text-gray-700 mb-4">Feedback form for visitors to provide comments or suggestions.</p>
+                <form id="feedback-form" class="flex flex-col md:flex-row items-center gap-4"></form>
+                    <input type="text" id="name" placeholder="Your Name" required class="border border-gray-300 rounded-md p-2 flex-grow">
+                    <input type="email" id="email" placeholder="Your Email" required class="border border-gray-300 rounded-md p-2 flex-grow">
+                    <textarea id="message" placeholder="Your Feedback" required class="border border-gray-300 rounded-md p-2 flex-grow"></textarea>
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300">Submit</button>
+                </form>
+                <p id="feedback-response" class="text-green-500 mt-4 hidden">Thank you for your feedback!</p>
+            </div>
+        </section>
+        <script>
+            document.getElementById('feedback-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+
+                // Send feedback to the backend
+                fetch('https://your-backend-url.com/feedback', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name, email, message }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('feedback-response').classList.remove('hidden');
+                        document.getElementById('feedback-form').reset();
+                    } else {
+                        alert('Failed to send feedback. Please try again later.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again later.');
+                });
+            });
+
+        </script>
+
+        <section id="contact" class="mb-16">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Contact Us</h2>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <p class="text-gray-700 mb-4">Detailed contact information, including email, phone, address, and social media links (e.g., ResearchGate, LinkedIn). Contact form for inquiries.</p>
+                <p class="text-blue-600 font-semibold">Email: <a href="mailto:email@example.com" class="hover:text-blue-800 transition duration-300">email@example.com</a></p>
+                <p class="text-blue-600 font-semibold">Phone: +254 112 019 838</p>
+                <p class="text-blue-600 font-semibold">Address: 123 Main Street, Anytown, KENYA</p>
+                <p class="text-blue-600 font-semibold">Social Media: <a href="#" class="hover:text-blue-800 transition duration-300">Follow us on Facebook</a></p>
+                </div>
+        </section>
+    </main>
+    <script>
+        document.querySelectorAll('.order-button').forEach(button => {
+            button.addEventListener('click', function () {
+                const medicineName = this.getAttribute('data-medicine-name');
+                const medicinePrice = this.getAttribute('data-medicine-price');
+                const whatsappNumber = '0112019838';
+                const message = `Hello, I would like to order ${medicineName} for ${medicinePrice}.`;
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+            });
+        });
+        function toggleNav() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+            closeMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+            });
+        }
+        toggleNav(); // Call the toggleNav function to initialize the event listeners
+        // Backend integration for contact and feedback forms
+        document.getElementById('feedback-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            try {
+                const response = await fetch('https://your-backend-url.com/feedback', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name, email, message }),
+                });
+
+                if (response.ok) {
+                    document.getElementById('feedback-response').classList.remove('hidden');
+                    document.getElementById('feedback-form').reset();
+                } else {
+                    alert('Failed to send feedback. Please try again later.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again later.');
+            }
+        });
+
+        document.querySelector('#contact form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch('https://your-backend-url.com/contact', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (response.ok) {
+                    alert('Your message has been sent successfully!');
+                    this.reset();
+                } else {
+                    alert('Failed to send your message. Please try again later.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again later.');
+            }
+        });
+        const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'mainapatrick016@gmail.com', // Replace with your email
+            pass: 'pato8197'  // Replace with your email password or app password
+        }
+    });
+    fetch('http://localhost:3000/api/contact', { // Update the URL to match your backend
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    const mailOptions = {
+        from: email,
+        to: 'mainapatrick016@gmail.com', // The target email address
+        subject: `New Message from ${name}`,
+        text: `You have received a new message:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+        res.status(200).json({ message: 'Email sent successfully!' });
+    } catch (error) {
+        console.error('Error sending email:', error);
+        res.status(500).json({ message: 'Failed to send email.' });
+    }
+        // Add event listeners to the hamburger button and close button
+        document.getElementById('hamburger-btn').addEventListener('click', function () {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.getElementById('close-menu-btn').addEventListener('click', function () {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.add('hidden');
+        });
+    </script>
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 HECO CHEMIST. All rights reserved.</p>
+            <p class="text-gray-400">Follow us on social media for updates!</p>
+            <div class="flex justify-center space-x-4 mt-2">
+                <a href="#" class="text-gray-400 hover:text-blue-500 transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-400 hover:text-blue-500 transition duration-300"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-gray-400 hover:text-blue-500 transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="text-gray-400 hover:text-blue-500 transition duration-300"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    </body>
+</html>
