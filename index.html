@@ -191,7 +191,7 @@
                     <h2 class="text-3xl font-semibold text-blue-700 fancy-heading">[Heco chemist]: Advancing Chemical Solutions</h2>
                     <p class="text-gray-700 mt-4">A concise statement of the chemist's expertise and services.</p>
                     <a href="#services" class="inline-block mt-6 bg-blue-500 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-md transition duration-300">Explore Services</a>
-                     <a href="https://wa.me/0112019838" target="_blank" class="inline-block mt-6 ml-4 bg-green-500 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-md transition duration-300">Order via WhatsApp</a>
+                     <a href="https://wa.me/+254112019838" target="_blank" class="inline-block mt-6 ml-4 bg-green-500 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-md transition duration-300">Order</a>
                 </div>
                 <div class="md:w-1/2">
                     <img src="https://i.pinimg.com/736x/66/c4/b1/66c4b1edcfdc8a3d74db350788c35d8a.jpg" alt="Chemistry Image" class="rounded-lg shadow-md">
@@ -264,7 +264,7 @@
                                 <span class="text-green-500 font-semibold text-sm">Pack of 10</span>
                                 <span class="text-blue-500 font-bold text-sm">$20</span>
                             </div>
-                            <button class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300 order-button" data-medicine-name="Medicine Name 1" data-medicine-price="$20" onclick="window.open('https://wa.me/0112019838?text=Hello, I would like to order Medicine Name 1 for $20.', '_blank')">Order via WhatsApp</button>
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300 order-button" data-medicine-name="Medicine Name 1" data-medicine-price="$20" onclick="window.open('https://wa.me/+254112019838?text=Hello, I would like to order Medicine Name 1 for $20.', '_blank')">Order</button>
                         </div>
                     </div>
                     <div class="medicine-card bg-white rounded-lg shadow-md overflow-hidden">
@@ -276,7 +276,7 @@
                                 <span class="text-green-500 font-semibold text-sm">Pack of 15</span>
                                 <span class="text-blue-500 font-bold text-sm">$25</span>
                             </div>
-                            <button class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300 order-button" data-medicine-name="Medicine Name 2" data-medicine-price="$25" onclick="window.open('https://wa.me/0112019838?text=Hello, I would like to order Medicine Name 2 for $25.', '_blank')">Order via WhatsApp</button>
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300 order-button" data-medicine-name="Medicine Name 2" data-medicine-price="$25" onclick="window.open('https://wa.me/+254112019838?text=Hello, I would like to order Medicine Name 2 for $25.', '_blank')">Order</button>
                         </div>
                     </div>
                     <div class="medicine-card bg-white rounded-lg shadow-md overflow-hidden">
@@ -288,7 +288,7 @@
                                 <span class="text-green-500 font-semibold text-sm">Pack of 20</span>
                                 <span class="text-blue-500 font-bold text-sm">$30</span>
                             </div>
-                            <button class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300 order-button" data-medicine-name="Medicine Name 3" data-medicine-price="$30" onclick="window.open('https://wa.me/0112019838?text=Hello, I would like to order Medicine Name 3 for $30.', '_blank')">Order via WhatsApp</button>
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300 order-button" data-medicine-name="Medicine Name 3" data-medicine-price="$30" onclick="window.open('https://wa.me/+254112019838?text=Hello, I would like to order Medicine Name 3 for $30.', '_blank')">Order</button>
                         </div>
                     </div>
                 </div>
@@ -357,7 +357,7 @@
             button.addEventListener('click', function () {
                 const medicineName = this.getAttribute('data-medicine-name');
                 const medicinePrice = this.getAttribute('data-medicine-price');
-                const whatsappNumber = '0112019838';
+                const whatsappNumber = '+254112019838';
                 const message = `Hello, I would like to order ${medicineName} for ${medicinePrice}.`;
                 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
                 window.open(whatsappUrl, '_blank');
@@ -371,7 +371,7 @@
                 mobileMenu.classList.add('hidden');
             });
         }
-        toggleNav(); // Call the toggleNav function to initialize the event listeners
+        toggleNav();
         // Backend integration for contact and feedback forms
         document.getElementById('feedback-form').addEventListener('submit', async function (e) {
             e.preventDefault();
